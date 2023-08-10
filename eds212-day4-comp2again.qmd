@@ -2,6 +2,41 @@
 title: "eds212-day4-comp2again"
 format: html
 editor: visual
+execute: 
+  warning: FALSE
 ---
 
-## 
+```{r}
+library(GGally)
+library(skimr)
+library(palmerpenguins)
+```
+
+# Basic data exploration
+
+-   names: get variable names 
+-   dim: get data dimensions 
+-   head: get first n lines (6 by default) 
+-   tail: get last n lines (6 by default)
+-   summary: get basic summary statistics
+
+```{r}
+names(penguins)
+dim(penguins)
+head(penguins)
+tail(penguins)
+summary(penguins)
+```
+```{r}
+skim(penguins)
+ggpairs(penguins)
+```
+```{r}
+ggplot(data = penguins, aes(x = flipper_length_mm)) + geom_histogram(aes(fill = species))
+```
+```{r}
+ggplot(data = penguins, aes(x=species, y=penguins$bill_length_mm))+
+  geom_boxplot(fill = "yellow", aes(color = island)) + geom_jitter(color = "magenta", alpha = 0.5, aes(size = bill_depth_mm)) + theme_dark()
+ 
+```
+
